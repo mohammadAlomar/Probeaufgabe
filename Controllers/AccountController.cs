@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Probeaufgabe.ViewModels;
 
-namespace WebApplication1.Controllers
+namespace Probeaufgabe.Controllers
 {
     public class AccountController : Controller
     {
