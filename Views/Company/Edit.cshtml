@@ -1,0 +1,114 @@
+﻿@model EditCompanyViewModel
+@{
+    ViewBag.Title = "Edit information Company";
+}
+<h1>Edit information Company</h1>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit" asp-controller="Company" method="post">
+
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-group" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-group" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyName"></label>
+                <input asp-for="CompanyName" class="form-group" />
+                <span asp-validation-for="CompanyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyNr"></label>
+                <input asp-for="CompanyNr" class="form-group" />
+                <span asp-validation-for="CompanyNr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" class="form-group" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fax"></label>
+                <input asp-for="Fax" class="form-group" />
+                <span asp-validation-for="Fax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailAddress"></label>
+                <input asp-for="EmailAddress" class="form-group" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StrHnr"></label>
+                <input asp-for="StrHnr" class="form-group" />
+                <span asp-validation-for="StrHnr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode"></label>
+                <input asp-for="ZipCode" class="form-group" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City"></label>
+                <input asp-for="City" class="form-group" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country"></label>
+                <input asp-for="Country" class="form-group" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <label asp-for="AdressType">
+                        <input id="check_id" asp-for="AdressType"  />
+                        @Html.DisplayNameFor(a => a.AdressType)
+                    </label>
+                </div>
+            </div>
+            <div id="post">
+                <div class="form-group">
+                    <label asp-for="StrHnrPost"></label>
+                    <input asp-for="StrHnrPost" class="form-group" />
+                    <span asp-validation-for="StrHnrPost" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ZipCodePost"></label>
+                    <input asp-for="ZipCodePost" class="form-group" />
+                    <span asp-validation-for="ZipCodePost" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CityPost"></label>
+                    <input asp-for="CityPost" class="form-group" />
+                    <span asp-validation-for="CityPost" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CountryPost"></label>
+                    <input asp-for="CountryPost" class="form-group" />
+                    <span asp-validation-for="CountryPost" class="text-danger"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+    @section Scripts
+{
+        <script>
+            $(document).ready(function () {
+                $('.form-check').change(function () {
+                    if ($('#check_id').is(":checked")) {
+                        $('#post').show();
+                    } else {
+                        $('#post').hide();
+                    }
+                });
+            });
+
+        </script>
+    }
+</div>
