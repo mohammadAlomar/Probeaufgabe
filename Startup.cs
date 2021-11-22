@@ -31,7 +31,7 @@ namespace Probeaufgabe
             var port = Configuration["Port"] ?? "1433";
             var database = Configuration["Database"] ?? "CompanyHändler";
             var userName = Configuration["UserID"] ?? "SA";
-            var password = Configuration["Password"] ?? "YourPaswword";
+            var password = Configuration["Password"] ?? "YourPassword";
             
             services.AddDbContext<AppDbContext>(o =>
 

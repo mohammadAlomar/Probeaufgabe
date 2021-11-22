@@ -21,11 +21,6 @@ namespace Probeaufgabe.Helper
                 EmailAddress = addressLinks[0].Company.EmailAddress,
                 CompanyName = addressLinks[0].Company.CompanyName,
                 CompanyNr = addressLinks[0].Company.CompanyNr,
-                StrHnrPost = addressLinks[1].Address.StrHnr,
-                ZipCodePost = addressLinks[1].Address.ZipCode,
-                CityPost = addressLinks[1].Address.City,
-                CountryPost = addressLinks[1].Address.Country,
-
                 City = addressLinks[0].Address.City,
                 ZipCode = addressLinks[0].Address.ZipCode,
                 StrHnr = addressLinks[0].Address.StrHnr,
@@ -33,9 +28,17 @@ namespace Probeaufgabe.Helper
 
             };
             if (addressLinks.Count > 1)
+            {
                 editCompanyViewModel.AdressType = true;
+                editCompanyViewModel.StrHnrPost = addressLinks[1].Address.StrHnr;
+                editCompanyViewModel.ZipCodePost = addressLinks[1].Address.ZipCode;
+                editCompanyViewModel.CityPost = addressLinks[1].Address.City;
+                editCompanyViewModel.CountryPost = addressLinks[1].Address.Country;
+            }
+            else
+                editCompanyViewModel.AdressType = false;
 
-                return editCompanyViewModel;
+            return editCompanyViewModel;
         }
     }
 }

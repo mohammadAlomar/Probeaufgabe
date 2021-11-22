@@ -26,10 +26,12 @@ namespace Probeaufgabe.ViewModels
 
         [Required]
         [Display(Name = "Telefonnummer")]
+        
         [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Phone Number.")]
         public int Phone { get; set; }
 
-        [Required]
+        
         [Display(Name = "Fax")]
         [DataType(DataType.PhoneNumber)]
         public int? Fax { get; set; }
