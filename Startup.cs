@@ -31,13 +31,13 @@ namespace Probeaufgabe
             var port = Configuration["Port"] ?? "1433";
             var database = Configuration["Database"] ?? "CompanyHändler";
             var userName = Configuration["UserID"] ?? "SA";
-            var password = Configuration["Password"] ?? "Abotark12-9-1987";
+            var password = Configuration["Password"] ?? "YourPaswword";
             
             services.AddDbContext<AppDbContext>(o =>
 
                 o.UseSqlServer($"Server={dataSource},{port};Database={database};User ID={userName};Password={password}",
 
-                sqlserver => sqlserver.MigrationsAssembly("WebApplication1")
+                sqlserver => sqlserver.MigrationsAssembly("Probeaufgabe")
 
             )) ;
             
