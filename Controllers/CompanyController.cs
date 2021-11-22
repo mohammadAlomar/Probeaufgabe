@@ -117,15 +117,31 @@ namespace WebApplication1.Controllers
                 List<AddressLink> adressLinksnew = new List<AddressLink>();
                 if (model.AdressType == true)
                 {
-                    addressLinks[1].AdressType = "post";
-                    var addresspost=_addressRepository.GetAddressById(addressLinks[1].Address.AddressId);
-                    addresspost = AddressHelper.ConvertDTO(model, addressLinks[1].AdressType, addresspost);
-                   
-                    await _addressRepository.UpdateAddress(addresspost);
-                    addressLinks[1].Address = addresspost;
-                    addressLinks[1].Company = company;
-                    adressLinksnew.Add(addressLinks[1]);
-                    await _addressLinkRepository.UpdateAddressLink(addressLinks[1]);
+                    if (addressLinks.Count == 1)
+                    {
+                        var addresslink = new AddressLink();
+                        addresslink.AdressType = "post";
+                        var addresnew= AddressHelper.ConvertDTO(model, addresslink.AdressType);
+                        await _addressRepository.InsertAddress(addresnew);
+                        addresslink.Address = addresnew;
+                        addresslink.Company = company;
+                        adressLinksnew.Add(addresslink);
+                        await _addressLinkRepository.InsertAddressLink(adressLinksnew);
+
+                    }
+                    else
+                    {
+                        addressLinks[1].AdressType = "post";
+                        var addresspost = _addressRepository.GetAddressById(addressLinks[1].Address.AddressId);
+                        addresspost = AddressHelper.ConvertDTO(model, addressLinks[1].AdressType, addresspost);
+
+                        await _addressRepository.UpdateAddress(addresspost);
+                        addressLinks[1].Address = addresspost;
+                        addressLinks[1].Company = company;
+                        
+                        await _addressLinkRepository.UpdateAddressLink(addressLinks[1]);
+                    }
+                  
                 }
                 addressLinks[0].AdressType = "main";
                 var address = _addressRepository.GetAddressById(addressLinks[0].Address.AddressId);
@@ -134,7 +150,6 @@ namespace WebApplication1.Controllers
                 await _addressRepository.UpdateAddress(address);
                 addressLinks[0].Address = address;
                 addressLinks[0].Company = company;
-                adressLinksnew.Add(addressLinks[0]);
 
                 await _addressLinkRepository.UpdateAddressLink(addressLinks[0]);
 
