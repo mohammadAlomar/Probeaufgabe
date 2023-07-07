@@ -22,7 +22,7 @@ jobs:
 
       - name: Run Renovate
         env:
-          REN_TOKEN: ${{ secrets.REN_TOKEN }}
+          REN_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: renovate
 
 
