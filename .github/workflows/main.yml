@@ -1,0 +1,24 @@
+name: Renovate
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'  # Replace with your desired .NET version
+
+      - name: Run Renovate
+        uses: renovatebot/renovate-action@v27
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          platform: github
