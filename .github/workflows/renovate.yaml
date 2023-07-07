@@ -21,7 +21,7 @@ jobs:
         run: npm install --global renovate
 
       - name: Run Renovate
-        run: renovate --token ${{ secrets.REN_TOKEN }} --platform github
+        run: renovate --token ${{ secrets.REN_TOKEN }} --platform github --autodiscover
 
 
 
