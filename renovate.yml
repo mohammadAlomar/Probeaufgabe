@@ -1,0 +1,4 @@
+extends:
+  - github>dotnet/core:renovate
+
+# Add any additional Renovate configuration options below:
