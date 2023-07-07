@@ -17,7 +17,7 @@ jobs:
           dotnet-version: '6.0.x'  # Replace with your desired .NET version
 
       - name: Run Renovate
-        uses: renovatebot/renovate-action@v27
+        uses: Probeaufgabe/renovate-action@v27
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           platform: github
