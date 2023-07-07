@@ -21,11 +21,7 @@ jobs:
         run: npm install --global renovate
 
       - name: Run Renovate
-        uses: renovatebot/renovate-action@v27
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          platform: github
-          repositories: "mohammadAlomar/Probeaufgabe"
+        run: renovate --token ${{ secrets.GITHUB_TOKEN }} --platform github --repository mohammadAlomar/Probeaufgabe
 
 
 
