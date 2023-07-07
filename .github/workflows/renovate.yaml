@@ -21,9 +21,10 @@ jobs:
         run: npm install --global renovate
 
       - name: Run Renovate
-        env:
-          REN_TOKEN:  ${{ secrets.REN_TOKEN }}
-        run: renovate
+        uses: renovatebot/renovate-action@v27
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          platform: github
 
 
 
