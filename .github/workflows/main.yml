@@ -1,5 +1,6 @@
 name: Renovate
 
+
 on:
   workflow_dispatch:   # Change the trigger to workflow_dispatch
 
@@ -16,8 +17,14 @@ jobs:
         with:
           dotnet-version: '6.0.x'  # Replace with your desired .NET version
 
+      - name: Install Renovate
+        run: npm install --global renovate
+
       - name: Run Renovate
-        uses: Probeaufgabe/renovate-action@v27
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          platform: github
+        env:
+          REN_TOKEN: ${{ secrets.REN_TOKEN }}
+        run: renovate
+
+
+
+
