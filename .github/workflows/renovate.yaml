@@ -25,6 +25,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           platform: github
+          repositories: "mohammadAlomar/Probeaufgabe"
 
 
 
