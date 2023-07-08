@@ -1,23 +1,17 @@
 {
-  "extends": ["@renovate/configure"],
-  "updateTargetBranches": ["master"],
-  "rangeStrategy": "bump",
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
   "packageRules": [
     {
-      "matchDepTypes": ["direct"],
       "matchUpdateTypes": ["minor", "patch"],
-      "matchTargetBranches": ["master"],
       "groupName": "Target Framework Updates",
       "commitMessage": "chore(deps): update target framework version",
-      "commitMessageTopic": "{{depName}}",
       "updateTasks": [
         {
           "runner": "text",
           "fileMatch": ["**/*.csproj"],
-          "replaceText": {
-            "find": "<TargetFramework>(.*?)</TargetFramework>",
-            "replace": "<TargetFramework>{{{updatedVersion}}}</TargetFramework>"
-          }
+          "matchStrings": ["<TargetFramework>.*?<\\/TargetFramework>"],
+          "replaceStrings": ["<TargetFramework>{{{updatedVersion}}}</TargetFramework>"]
         }
       ]
     }
