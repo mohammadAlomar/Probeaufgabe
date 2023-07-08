@@ -13,9 +13,9 @@
       }
     },
     {
-     "matchPackageNames": ["Microsoft.NET.Sdk"],
+     "matchPackageNames": ["Microsoft.NET.Sdk.Web"],
       "postUpgradeTasks": {
-        "commands": ["sed -i 's/<TargetFramework>netcoreapp3.1<\\/TargetFramework>/<TargetFramework>netcoreapp6.0<\\/TargetFramework>/' **/*.csproj"],
+        "commands": ["dotnet build"],
         "fileFilters": ["**/*.csproj"],
         "executionMode": "update"
       }
