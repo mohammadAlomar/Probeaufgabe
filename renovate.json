@@ -1,3 +1,24 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "Target Framework Updates",
+      "commitMessage": "chore(deps): update target framework version",
+      "postUpgradeTasks": {
+        "commands": ["dotnet migrate"],
+        "fileFilters": ["**/*.csproj"],
+        "executionMode": "update"
+      }
+    },
+    {
+     "matchPackageNames": ["Microsoft.NET.Sdk"],
+      "postUpgradeTasks": {
+        "commands": ["sed -i 's/<TargetFramework>netcoreapp3.1<\\/TargetFramework>/<TargetFramework>netcoreapp6.0<\\/TargetFramework>/' **/*.csproj"],
+        "fileFilters": ["**/*.csproj"],
+        "executionMode": "update"
+      }
+    }
+  ]
 }
