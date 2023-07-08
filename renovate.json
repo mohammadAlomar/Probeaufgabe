@@ -1,28 +1,22 @@
 {
-  "extends": ["config:base"],
+  "extends": ["@renovate/configure"],
+  "updateTargetBranches": ["master"],
+  "rangeStrategy": "bump",
   "packageRules": [
     {
-      "updateTypes": ["minor", "patch"],
+      "matchDepTypes": ["direct"],
+      "matchUpdateTypes": ["minor", "patch"],
       "matchTargetBranches": ["master"],
-      "packagePatterns": ["*"],
       "groupName": "Target Framework Updates",
       "commitMessage": "chore(deps): update target framework version",
       "commitMessageTopic": "{{depName}}",
       "updateTasks": [
         {
-          "matchUpdateTypes": ["minor"],
-          "runner": "script",
-          "script": {
-            "fileMatch": ["**/*.csproj"],
-            "bash": "sed -i 's/<TargetFramework>netcoreapp3.1/<TargetFramework>{{{updatedVersion}}}/' ${{filePath}}"
-          }
-        },
-        {
-          "matchUpdateTypes": ["patch"],
-          "runner": "script",
-          "script": {
-            "fileMatch": ["**/*.csproj"],
-            "bash": "sed -i 's/<TargetFramework>netcoreapp3.1/<TargetFramework>{{{updatedVersion}}}/' ${{filePath}}"
+          "runner": "text",
+          "fileMatch": ["**/*.csproj"],
+          "replaceText": {
+            "find": "<TargetFramework>netcoreapp3.1</TargetFramework>",
+            "replace": "<TargetFramework>{{{updatedVersion}}}</TargetFramework>"
           }
         }
       ]
