@@ -15,7 +15,7 @@
     {
      "matchPackageNames": ["Microsoft.NET.Sdk"],
       "postUpgradeTasks": {
-        "commands": ["dotnet migrate"],
+        "commands": ["sed -i 's/<TargetFramework>netcoreapp3.1<\\/TargetFramework>/<TargetFramework>netcoreapp6.0<\\/TargetFramework>/' **/*.csproj"],
         "fileFilters": ["**/*.csproj"],
         "executionMode": "update"
       }
