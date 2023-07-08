@@ -7,20 +7,20 @@
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "Target Framework Updates",
       "commitMessage": "chore(deps): update target framework version",
-      "postUpgradeTasks": [
-        {
-          "commands": ["dotnet migrate"],
-          "fileFilters": ["**/*.csproj"],
-          "executionMode": "update"
-        },
-        {
-          "commands": [
-            "sed -i 's/<TargetFramework>netcoreapp3.1<\/TargetFramework>/<TargetFramework>netcoreapp6.0<\/TargetFramework>/' **/*.csproj"
-          ],
-          "fileFilters": ["**/*.csproj"],
-          "executionMode": "update"
-        }
-      ]
+      "postUpgradeTasks": {
+        "commands": [
+          {
+            "runner": "dotnet",
+            "command": "migrate"
+          },
+          {
+            "runner": "shell",
+            "command": "sed -i 's/<TargetFramework>netcoreapp3.1<\\/TargetFramework>/<TargetFramework>netcoreapp6.0<\\/TargetFramework>/' project.csproj"
+          }
+        ],
+        "fileFilters": ["**/*.csproj"],
+        "executionMode": "update"
+      }
     }
   ]
 }
