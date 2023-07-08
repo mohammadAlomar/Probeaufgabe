@@ -6,14 +6,11 @@
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "Target Framework Updates",
       "commitMessage": "chore(deps): update target framework version",
-      "postUpgradeTasks": 
-        {
-          "runner": "text",
-          "fileMatch": ["**/*.csproj"],
-          "matchStrings": ["<TargetFramework>(.*?)<\\/TargetFramework>"],
-          "replaceStrings": ["<TargetFramework>{{{updatedVersion}}}</TargetFramework>"]
-        }
-      
+      "postUpgradeTasks": {
+        "commands": ["dotnet migrate"],
+        "fileFilters": ["**/*.csproj"],
+        "executionMode": "update"
+      }
     }
   ]
 }
