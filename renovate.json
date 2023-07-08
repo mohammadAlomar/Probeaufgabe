@@ -15,7 +15,7 @@
           "runner": "text",
           "fileMatch": ["**/*.csproj"],
           "replaceText": {
-            "find": "<TargetFramework>netcoreapp3.1</TargetFramework>",
+            "find": "<TargetFramework>(.*?)</TargetFramework>",
             "replace": "<TargetFramework>{{{updatedVersion}}}</TargetFramework>"
           }
         }
