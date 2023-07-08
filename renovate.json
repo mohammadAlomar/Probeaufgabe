@@ -19,5 +19,6 @@
         "fileFilters": ["**/*.csproj"],
         "executionMode": "update"
       }
+    }
   ]
 }
