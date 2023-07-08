@@ -6,14 +6,11 @@
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "Target Framework Updates",
       "commitMessage": "chore(deps): update target framework version",
-      "automerge": true,
-      "matchDepTypes": ["direct"],
-      "packagePatterns": ["*"],
-      "updateTasks": [
+      "postUpgradeTasks": [
         {
           "runner": "text",
           "fileMatch": ["**/*.csproj"],
-          "matchStrings": ["<TargetFramework>(.*?)</TargetFramework>"],
+          "matchStrings": ["<TargetFramework>(.*?)<\\/TargetFramework>"],
           "replaceStrings": ["<TargetFramework>{{{updatedVersion}}}</TargetFramework>"]
         }
       ]
