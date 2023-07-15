@@ -26,6 +26,6 @@ jobs:
       - name: Update Target Framework
         run: |
           echo "Updating target framework to net6.0"
-          dotnet restore
+          dotnet restore Probeaufgabe.sln
 
 
