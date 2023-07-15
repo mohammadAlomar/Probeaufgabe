@@ -23,6 +23,9 @@ jobs:
       - name: Run Renovate
         run: renovate --token ${{ secrets.REN_TOKEN }} --platform github --autodiscover
 
-
+      - name: Update Target Framework
+        run: |
+          echo "Updating target framework to net6.0"
+          dotnet restore
 
 
