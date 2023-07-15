@@ -1,11 +1,5 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base"],
-  "packageRules": [
-    {
-      "name": "*",
-      "versionRange": ">=2.0.0 <3.0.0"
-    }
-  ],
   "targetVersion": "net6.0"
 }
